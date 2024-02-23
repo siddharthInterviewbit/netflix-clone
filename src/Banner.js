@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useRef } from 'react'
 import axios from './axios';
 import requests from './requests';
 import "./Banner.css"
+import ReactHlsPlayer from 'react-hls-player';
 
-function Banner() {
-  const [movie, setMovie] = useState([]);
+const Banner = () => {
+  const [movie, setMovie] = useState(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
 
   useEffect(() => {
 
@@ -22,38 +25,45 @@ function Banner() {
     fetchData();
   }, []);
 
-  // console.log(movie)
-
-  function truncate(str, n) {
-    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
-  }
+  const handleMuteToggle = () => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = !video.muted;
+      setIsMuted(video.muted);
+    }  
+  };
 
   return (
-    <header className="banner"
-      style={{
-        backgroundSize: "cover",
-        backgroundImage: `url(
-        "https://image.tmdb.org/t/p/original/${movie?.backdrop_path}"
-        )`,
-        backgroundPosition: "center center"
-      }}
-    >
-      <div className="banner_contents">
-        <h1 className="banner_title">
-          {movie?.title || movie?.name || movie?.original_name}
-        </h1>
+    <div className="autoplay-banner">
+      {movie && (
+        <>
+          <div className="overlay">
+            <div className="content">
+              <h2 className="title">{movie.name}</h2>
+              <p className="description">{movie.overview}</p>
+              <button className="play-button">
+                <i className="fas fa-play"></i> Play
+              </button>
+            </div>
+          </div>
+          <ReactHlsPlayer
+            className="video"
+            ref={videoRef}
+            src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+            autoPlay
+            muted={isMuted}
+            controls={false}
+            width="100%"
+            height="100%"
+          />
 
-        <div className="banner_buttons">
-          <button className="banner_button">Play</button>
-          <button className="banner_button">My List</button>
-        </div>
-        <h1 className="banner_description">{truncate(movie?.overview, 150)}</h1>
-      </div>
+        <button className="mute-button" onClick={handleMuteToggle}>
+          {isMuted ? <i className="fas fa-volume-mute">mute</i> : <i className="fas fa-volume-up"></i>}
+        </button>
+        </>
+      )}
+    </div>
+  );
+};
 
-      <div className="banner--fadeBottom" />
-    </header>
-
-  )
-}
-
-export default Banner
+export default Banner;

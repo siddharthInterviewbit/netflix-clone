@@ -9,8 +9,9 @@
     "axios": "^0.21.1",
     "lodash": "4.17.21",
     "movie-trailer": "^2.0.6",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hls-player": "3.0.1",
     "react-scripts": "3.4.1",
     "react-youtube": "^7.11.3"
   },

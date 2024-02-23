@@ -4,7 +4,7 @@ import { useSearch } from './SearchContext';
 import "./Search.css";
 
 const SearchInput = () => {
-  const { search, setFlag } = useSearch();
+  const { search, setFlag, flag } = useSearch();
   const [query, setQuery] = useState('');
 
   const handleChange = (event) => {
@@ -42,8 +42,8 @@ const SearchInput = () => {
         placeholder="Search for movies..."
         className="search-input"
       />
-      <button type="button" className="cancel-button" onClick={cancelSearch}>X</button>
-      <button type="submit" className="search-button">Search</button>
+      {flag && <button type="button" className="cancel-button" onClick={cancelSearch}>X</button>}
+      {!flag && <button type="submit" className="search-button">Search</button>}
     </form>
   );
 };
