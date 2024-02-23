@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Search from './Search';
+import ProfileDropdown from './ProfileDropdown';
 
 import "./Nav.css";
 
@@ -16,7 +17,7 @@ function Nav() {
       window.removeEventListener("scroll")
     }
   }, []);
-
+  
   return (
     <div className={`nav ${show && "nav_black"}`}>
       <div className="nav_logo">
@@ -27,15 +28,18 @@ function Nav() {
         />
       </div>
 
+      <ul className="navbar-links">
+        <li className="navbar-link">Home</li>
+        <li className="navbar-link">TV Shows</li>
+        <li className="navbar-link">Movies</li>
+        <li className="navbar-link">Latest</li>
+        <li className="navbar-link">My List</li>
+      </ul>
       <Search />
 
-      <div className="nav_avatar">
 
-        <img
-          className="nav_avatar_img"
-          src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/366be133850498.56ba69ac36858.png"
-          alt="Netflix Logo"
-        />
+      <div className="nav_avatar">
+        <ProfileDropdown />
       </div>
     </div>
   )

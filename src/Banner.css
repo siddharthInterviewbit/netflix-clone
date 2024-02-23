@@ -1,52 +1,64 @@
-.banner {
-  color: white;
-  object-fit: contain;
-  height: 448px;
+/* AutoplayBanner.css */
+
+.autoplay-banner {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Adjust height as needed */
+  overflow: hidden;
 }
 
-.banner_contents {
-  margin-left: 30px;
-  padding-top: 140px;
-  height: 190px;
+.mute-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 50px;
+  z-index: 11;
 }
 
-.banner_title {
-  font-size: 3rem;
-  font-weight: 800;
-  padding-bottom: 0.3rem;
+.video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
-.banner_description {
-  width: 45rem;
-  line-height: 1.3;
-  font-size: 0.8rem;
-  max-width: 360px;
-  height: 80px;
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  display: flex;
+  align-items: center;
 }
 
-.banner_button {
-  cursor: pointer;
-  color: white;
-  outline: none;
+.content {
+  max-width: 800px;
+  padding: 20px;
+}
+
+.title {
+  font-size: 32px;
+  color: #fff;
+}
+
+.description {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.play-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #e50914;
+  color: #fff;
   border: none;
-  font-weight: 700;
-  border-radius: 0.2vw;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  margin-right: 1rem;
-  background-color: rgb(51, 51, 51, 0.5);
-
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.banner_button:hover {
-  color: #000;
-  background-color: #e6e6e6;
-  transition: all 0.2s;
-}
-
-.banner--fadeBottom {
-  height: 7.4rem;
-  background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);
+.play-button:hover {
+  background-color: #ff0d24;
 }
