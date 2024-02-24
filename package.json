@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mdi/js": "7.3.67",
+    "@mdi/react": "1.6.1",
     "axios": "1.6.7",
     "lodash": "4.17.21",
     "movie-trailer": "3.2.2",
@@ -10,6 +12,7 @@
     "react-dom": "18.2.0",
     "react-fontawesome": "0.2.0",
     "react-hls-player": "3.0.7",
+    "react-router-dom": "5.3.4",
     "react-scripts": "5.0.1",
     "react-youtube": "10.1.0"
   },

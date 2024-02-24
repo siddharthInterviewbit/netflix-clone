@@ -1,6 +1,6 @@
 // SearchResult.js
 import React from 'react';
-import { useSearch } from './SearchContext';
+import { useSearch } from '../../Context/SearchContext';
 import "./SearchResult.css";
 
 const SearchResult = () => {

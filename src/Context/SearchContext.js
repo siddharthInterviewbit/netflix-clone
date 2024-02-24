@@ -1,7 +1,7 @@
 // SearchContext.js
 import React, { createContext, useState, useContext } from 'react';
-import axios from './axios';
-import requests from './requests';
+import axios from '../api/axios';
+import requests from '../api/requests';
 
 const SearchContext = createContext();
 

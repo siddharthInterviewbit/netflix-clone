@@ -1,11 +1,12 @@
 // SearchInput.js
 import React, { useState } from 'react';
-import { useSearch } from './SearchContext';
+import { useSearch } from '../../Context/SearchContext';
 import "./Search.css";
+import { useHistory } from 'react-router-dom';
 
 const SearchInput = () => {
-  const { search, setFlag, flag } = useSearch();
-  const [query, setQuery] = useState('');
+  const { search, setFlag, flag, query, setQuery } = useSearch();
+  const history = useHistory();
 
   const handleChange = (event) => {
     setQuery(event.target.value);
@@ -14,27 +15,19 @@ const SearchInput = () => {
   const cancelSearch = () => {
     setQuery('');
     setFlag(false);
+    history.push('/');
   }
-
-  const debounce = (func, delay) => {
-    let timeoutId;
-    return function (...args) {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => func.apply(this, args), delay);
-    };
-  };
-
-  const debouncedSearch = debounce(search, 500);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (query) {
-        debouncedSearch(query);
+      search(query);
+      history.push(`/search/${encodeURIComponent(query)}`);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="search-form">
+    <div  className="search-form">
       <input
         type="text"
         value={query}
@@ -43,8 +36,8 @@ const SearchInput = () => {
         className="search-input"
       />
       {flag && <button type="button" className="cancel-button" onClick={cancelSearch}>X</button>}
-      {!flag && <button type="submit" className="search-button">Search</button>}
-    </form>
+      {!flag && <button type="submit" className="search-button" onClick={handleSubmit}>Search</button>}
+    </div>
   );
 };
 
