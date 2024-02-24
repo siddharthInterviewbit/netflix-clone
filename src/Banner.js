@@ -48,17 +48,17 @@ const Banner = () => {
           </div>
           <ReactHlsPlayer
             className="video"
-            ref={videoRef}
             src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
             autoPlay
             muted={isMuted}
             controls={false}
             width="100%"
             height="100%"
+            playerRef={videoRef}
           />
 
         <button className="mute-button" onClick={handleMuteToggle}>
-          {isMuted ? <i className="fas fa-volume-mute">mute</i> : <i className="fas fa-volume-up"></i>}
+          {isMuted ? <i className="fas fa-volume-mute">unmute</i> : <i className="fas fa-volume-up"> mute</i>}
         </button>
         </>
       )}
