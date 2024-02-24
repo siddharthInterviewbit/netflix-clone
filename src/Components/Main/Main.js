@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { useSearch } from './SearchContext';
-import Row from './Row';
-import requests from './requests';
-import Banner from './Banner';
+import { useSearch } from '../../Context/SearchContext';
+import Row from '../Row';
+import requests from '../../api/requests';
+import Banner from '../Banner';
 function Main() {
     const { flag } = useSearch();
 

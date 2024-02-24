@@ -1,8 +1,10 @@
 import React, { useState, useEffect,useRef } from 'react'
-import axios from './axios';
-import requests from './requests';
+import axios from '../../api/axios';
+import requests from '../../api/requests';
 import "./Banner.css"
 import ReactHlsPlayer from 'react-hls-player';
+import Icon from '@mdi/react';
+import { mdiVolumeHigh, mdiVolumeOff } from '@mdi/js';
 
 const Banner = () => {
   const [movie, setMovie] = useState(null);
@@ -57,9 +59,11 @@ const Banner = () => {
             playerRef={videoRef}
           />
 
-        <button className="mute-button" onClick={handleMuteToggle}>
-          {isMuted ? <i className="fas fa-volume-mute">unmute</i> : <i className="fas fa-volume-up"> mute</i>}
-        </button>
+        <div className="mute-button" onClick={handleMuteToggle}>
+          {isMuted ? <Icon path={mdiVolumeOff} size={1.5} />
+           : <Icon path={mdiVolumeHigh} size={1.5} />
+          }
+        </div>
         </>
       )}
     </div>
